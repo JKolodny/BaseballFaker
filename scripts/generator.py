@@ -2,13 +2,13 @@ import json
 import numpy as np
 
 # importing assumptions
-with open('../assumptions.json', 'r', encoding='utf-8') as f:
+with open("../assumptions.json", "r", encoding="utf-8") as f:
     assumptions = json.load(f)
 
 # assumptions
 RANDOM_SEED = assumptions["RANDOM_SEED"]
 CAREER_LENGTH = assumptions["CAREER_LENGTH"]
-NUMBER_GAMES_SEASON = assumptions[ "NUMBER_GAMES_SEASON"]
+NUMBER_GAMES_SEASON = assumptions["NUMBER_GAMES_SEASON"]
 
 # seed
 np.random.seed(RANDOM_SEED)
