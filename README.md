@@ -1,4 +1,4 @@
-# Fake_Baseball_Data_Simulation
+# Fake Baseball Data Simulation
 
 ## Motivation
 
