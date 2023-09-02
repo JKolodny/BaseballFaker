@@ -14,7 +14,7 @@ NUMBER_GAMES_SEASON = assumptions["NUMBER_GAMES_SEASON"]
 # seed
 np.random.seed(RANDOM_SEED)
 
-CAREER_STATS = []
+CAREER_STATS = {"Hits": []}
 for _ in range(CAREER_LENGTH):
     SEASON_STATS = 0
     for _ in range(NUMBER_GAMES_SEASON):
@@ -22,7 +22,6 @@ for _ in range(CAREER_LENGTH):
         OUTCOME = np.random.randint(0, AT_BATS_IN_GAME)
         SEASON_STATS += OUTCOME
 
-    CAREER_STATS.append(SEASON_STATS)
+    CAREER_STATS["Hits"].append(SEASON_STATS)
 
 print(CAREER_STATS)
-print(sum(CAREER_STATS))
