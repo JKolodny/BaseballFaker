@@ -30,8 +30,8 @@ def generation(SEED = 42,
     # Generate a random last name
     last_name = fake.last_name()
 
-    CAREER_STATS = {"Hits": [],
-                    "AB": [], 
+    CAREER_STATS = {"AB": [],
+                    "Hits": [], 
                     "AVG": [], 
                     "2B": [], 
                     "3B": [], 
@@ -62,8 +62,8 @@ def generation(SEED = 42,
                     HR += 1
 
 
-        CAREER_STATS["Hits"].append(HITS)
         CAREER_STATS["AB"].append(AB)
+        CAREER_STATS["Hits"].append(HITS)
         CAREER_STATS["2B"].append(_2B)
         CAREER_STATS["3B"].append(_3B)
         CAREER_STATS["HR"].append(HR)
