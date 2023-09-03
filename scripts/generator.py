@@ -20,13 +20,20 @@ CAREER_LENGTH = round(CAREER_LENGTH * CAREER_MULTIPLIER)
 # seed
 np.random.seed(RANDOM_SEED)
 
+# generating name
+# Generate a random male first name
+first_name = fake.first_name_male()
+
+# Generate a random last name
+last_name = fake.last_name()
+
 CAREER_STATS = {"Hits": [],
                 "AB": [], 
                 "AVG": [], 
                 "2B": [], 
                 "3B": [], 
                 "HR": [],
-                "Name":[]}
+                "Name":[f"{first_name} {last_name}"] * CAREER_LENGTH}
 
 for _ in range(CAREER_LENGTH):
     HITS = 0
@@ -51,12 +58,6 @@ for _ in range(CAREER_LENGTH):
             else:
                 HR += 1
 
-    # Generate a random male first name
-    first_name = fake.first_name_male()
-
-    # Generate a random last name
-    last_name = fake.last_name()
-
 
     CAREER_STATS["Hits"].append(HITS)
     CAREER_STATS["AB"].append(AB)
@@ -64,6 +65,5 @@ for _ in range(CAREER_LENGTH):
     CAREER_STATS["3B"].append(_3B)
     CAREER_STATS["HR"].append(HR)
     CAREER_STATS["AVG"].append(round(HITS / AB, 3))
-    CAREER_STATS["Name"].append(f"{first_name} {last_name}")
 
 print(CAREER_STATS)
