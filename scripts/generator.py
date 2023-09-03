@@ -1,6 +1,8 @@
 """ Generating Fake Baseball Data """
 import json
 import numpy as np
+from faker import Faker
+fake = Faker()
 
 # importing assumptions
 with open("../assumptions.json", "r", encoding="utf-8") as f:
@@ -19,7 +21,8 @@ CAREER_STATS = {"Hits": [],
                 "AVG": [], 
                 "2B": [], 
                 "3B": [], 
-                "HR": []}
+                "HR": [],
+                "Name":[]}
 
 for _ in range(CAREER_LENGTH):
     HITS = 0
@@ -44,11 +47,19 @@ for _ in range(CAREER_LENGTH):
             else:
                 HR += 1
 
+    # Generate a random male first name
+    first_name = fake.first_name_male()
+
+    # Generate a random last name
+    last_name = fake.last_name()
+
+
     CAREER_STATS["Hits"].append(HITS)
     CAREER_STATS["AB"].append(AB)
     CAREER_STATS["2B"].append(_2B)
     CAREER_STATS["3B"].append(_3B)
     CAREER_STATS["HR"].append(HR)
     CAREER_STATS["AVG"].append(round(HITS / AB, 3))
+    CAREER_STATS["Name"].append(f"{first_name} {last_name}")
 
 print(CAREER_STATS)
