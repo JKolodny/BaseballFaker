@@ -1,4 +1,4 @@
-# Fake Baseball Data Simulation
+# Synthetic Baseball Data
 
 ## Motivation
 
