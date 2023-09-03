@@ -6,7 +6,8 @@ from faker import Faker
 
 def generation(SEED = 42, 
                CAREER_LENGTH = 20,
-                NUMBER_GAMES_SEASON = 162 ):
+                NUMBER_GAMES_SEASON = 162,
+                DETERMINISTIC = False):
 
     """
     Generates Fake Baseball Career Data
@@ -15,8 +16,9 @@ def generation(SEED = 42,
     fake = Faker()
 
     # variable career length
-    CAREER_MULTIPLIER = np.random.uniform(0.7, 1.2)
-    CAREER_LENGTH = round(CAREER_LENGTH * CAREER_MULTIPLIER)
+    if not DETERMINISTIC:
+        CAREER_MULTIPLIER = np.random.uniform(0.7, 1.2)
+        CAREER_LENGTH = round(CAREER_LENGTH * CAREER_MULTIPLIER)
 
     # seed
     np.random.seed(SEED)
