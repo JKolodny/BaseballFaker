@@ -1,3 +1,5 @@
+![Sprite-0001](https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/7c2fafc8-4e80-4c12-a736-ca60cfaf5ad3)
+
 # Synthetic Baseball Data
 
 ## Motivation
