@@ -8,4 +8,4 @@ bottleneck (at least for me) is getting my hands on data. In effect, this makes 
 * The value I'm trying to create here is the ability to generate simple, probably not great, but reasonable fake data for use in projects before committing to developing web scraping pipelines.
 
 * Example Usages:
-    * see example.py file
+    * see example.py file in scripts folder.
