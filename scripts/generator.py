@@ -13,6 +13,10 @@ RANDOM_SEED = assumptions["RANDOM_SEED"]
 CAREER_LENGTH = assumptions["CAREER_LENGTH"]
 NUMBER_GAMES_SEASON = assumptions["NUMBER_GAMES_SEASON"]
 
+# variable career length
+CAREER_MULTIPLIER = np.random.uniform(0.7, 1.2)
+CAREER_LENGTH = round(CAREER_LENGTH * CAREER_MULTIPLIER)
+
 # seed
 np.random.seed(RANDOM_SEED)
 
