@@ -1,5 +1,7 @@
 # Synthetic Baseball Data
 
+![image](https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/cc4b3003-169d-413e-a88a-69d181b72fba)
+
 ## Motivation
 
 * Lately, when trying to work on sports analytics projects, I realize that a big
