@@ -1,6 +1,7 @@
 # Synthetic Baseball Data
 
-![image](https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/cc4b3003-169d-413e-a88a-69d181b72fba)
+![image](https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/55ed193d-4d31-4b7f-971d-d7f9d012f442)
+
 
 ## Motivation
 
