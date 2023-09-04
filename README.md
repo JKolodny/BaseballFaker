@@ -1,4 +1,4 @@
-# Synthetic Baseball Data
+# ![image](https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/845315da-5c95-4869-b4e5-d34efe11600f)
 
 ![image](https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/55ed193d-4d31-4b7f-971d-d7f9d012f442)
 
