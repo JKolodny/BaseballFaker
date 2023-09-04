@@ -3,9 +3,9 @@
 # import libraries
 import numpy as np
 from faker import Faker
+import pandas as pd
 
-def generation(SEED = 42, 
-               CAREER_LENGTH = 20,
+def generation(CAREER_LENGTH = 20,
                 NUMBER_GAMES_SEASON = 162,
                 DETERMINISTIC = False):
 
@@ -19,9 +19,6 @@ def generation(SEED = 42,
     if not DETERMINISTIC:
         CAREER_MULTIPLIER = np.random.uniform(0.7, 1.2)
         CAREER_LENGTH = round(CAREER_LENGTH * CAREER_MULTIPLIER)
-
-    # seed
-    np.random.seed(SEED)
 
     # generating name
     # Generate a random male first name
@@ -68,5 +65,13 @@ def generation(SEED = 42,
         CAREER_STATS["3B"].append(_3B)
         CAREER_STATS["HR"].append(HR)
         CAREER_STATS["AVG"].append(round(HITS / AB, 3))
+
+    CAREER_STATS = pd.DataFrame(CAREER_STATS)
+    totals = pd.DataFrame(CAREER_STATS.sum()).T
+    totals['AVG'] = round(CAREER_STATS['AVG'].mean(), 3)
+    totals['Name'] = CAREER_STATS['Name'][0]
+
+    CAREER_STATS = pd.concat([CAREER_STATS, totals])
+    CAREER_STATS.index = list(CAREER_STATS.index)[:-1] + ['Career Totals']
 
     return CAREER_STATS
