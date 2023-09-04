@@ -33,14 +33,18 @@ def generation(CAREER_LENGTH = 20,
                     "2B": [], 
                     "3B": [], 
                     "HR": [],
+                    "RBI": [],
                     "Name":[f"{first_name} {last_name}"] * CAREER_LENGTH}
 
     for _ in range(CAREER_LENGTH):
+
         HITS = 0
         AB = 0
         _2B = 0
         _3B = 0
         HR = 0
+        RBI = 0
+
         for _ in range(NUMBER_GAMES_SEASON):
             AT_BATS_IN_GAME = np.random.randint(1, 6)
             OUTCOME = np.random.randint(0, AT_BATS_IN_GAME)
@@ -52,10 +56,13 @@ def generation(CAREER_LENGTH = 20,
                 if HIT_TYPE < 16:
                     break
                 elif HIT_TYPE < 20:
+                    RBI += .5
                     _2B += 1
                 elif HIT_TYPE < 21:
+                    RBI += 1
                     _3B += 1
                 else:
+                    RBI += 2
                     HR += 1
 
 
@@ -64,6 +71,7 @@ def generation(CAREER_LENGTH = 20,
         CAREER_STATS["2B"].append(_2B)
         CAREER_STATS["3B"].append(_3B)
         CAREER_STATS["HR"].append(HR)
+        CAREER_STATS["RBI"].append(round(RBI))
         CAREER_STATS["AVG"].append(round(HITS / AB, 3))
 
     CAREER_STATS = pd.DataFrame(CAREER_STATS)
