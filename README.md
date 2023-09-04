@@ -9,5 +9,6 @@ bottleneck (at least for me) is getting my hands on data. In effect, this makes 
 
 * Example Usages:
     * see example.ipynb file in scripts folder.
-    * * <img width="1097" alt="image" src="https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/f22451fe-e4ff-4952-886d-9b5bc8f0144c">
+    * * <img width="1117" alt="image" src="https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/d39442ac-7a10-4acb-92b1-a03720fdbc62">
+
 
