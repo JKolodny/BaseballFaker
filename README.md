@@ -1,4 +1,5 @@
-# ![image](https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/845315da-5c95-4869-b4e5-d34efe11600f)
+# ![image](https://github.com/JKolodny/SportFaker/assets/24982246/203c5b92-3bbb-496f-b330-c1d5d2dd30b8)
+
 
 ![image](https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/55ed193d-4d31-4b7f-971d-d7f9d012f442)
 
