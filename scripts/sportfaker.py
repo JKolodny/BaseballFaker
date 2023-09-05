@@ -11,6 +11,10 @@ def baseball_batting(CAREER_LENGTH = 20,
 
     """
     Generates Fake Baseball Career Data
+
+    INPUT:
+
+    OUTPUT:
     """
 
     fake = Faker()
@@ -29,11 +33,12 @@ def baseball_batting(CAREER_LENGTH = 20,
 
     CAREER_STATS = {"AB": [],
                     "Hits": [], 
-                    "AVG": [], 
                     "2B": [], 
                     "3B": [], 
                     "HR": [],
                     "RBI": [],
+                    "AVG": [], 
+                    "SLG": [],
                     "Name":[f"{first_name} {last_name}"] * CAREER_LENGTH}
 
     for _ in range(CAREER_LENGTH):
@@ -74,9 +79,15 @@ def baseball_batting(CAREER_LENGTH = 20,
         CAREER_STATS["RBI"].append(round(RBI))
         CAREER_STATS["AVG"].append(round(HITS / AB, 3))
 
+        singles = HITS - (_2B + _3B + HR)
+        total_bases = singles + (2*_2B) + (3*_3B) + (4*HR)
+        slugging = round((total_bases/AB), 3)
+        CAREER_STATS["SLG"].append(slugging) 
+
     CAREER_STATS = pd.DataFrame(CAREER_STATS)
     totals = pd.DataFrame(CAREER_STATS.sum()).T
     totals['AVG'] = round(CAREER_STATS['AVG'].mean(), 3)
+    totals['SLG'] = round(CAREER_STATS['SLG'].mean(), 3)
     totals['Name'] = CAREER_STATS['Name'][0]
 
     CAREER_STATS = pd.concat([CAREER_STATS, totals])
