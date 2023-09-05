@@ -1,6 +1,7 @@
-# ![image](https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/845315da-5c95-4869-b4e5-d34efe11600f)
+# ![image](https://github.com/JKolodny/SportFaker/assets/24982246/203c5b92-3bbb-496f-b330-c1d5d2dd30b8)
 
-![image](https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/55ed193d-4d31-4b7f-971d-d7f9d012f442)
+
+![image](https://github.com/JKolodny/SportFaker/assets/24982246/19d501db-f162-45e7-9a83-ee9a388d7a0d)
 
 
 ## Motivation
@@ -12,7 +13,8 @@ bottleneck (at least for me) is getting my hands on data. In effect, this makes 
 
 * Example Usages:
     * see example.ipynb file in scripts folder.
-    * * <img width="1117" alt="image" src="https://github.com/JKolodny/Synthetic_Baseball_Data/assets/24982246/840586e6-ea30-4613-bccd-6ef675b83eaa">
+    * * ![image](https://github.com/JKolodny/SportFaker/assets/24982246/257e5ddd-25ea-4b21-b050-c004ec9f59bf)
+
 
 
 
