@@ -5,9 +5,9 @@ import numpy as np
 from faker import Faker
 import pandas as pd
 
-def generation(CAREER_LENGTH = 20,
+def baseball_batting(CAREER_LENGTH = 20,
                 NUMBER_GAMES_SEASON = 162,
-                DETERMINISTIC = False):
+                DETERMINISTIC = True):
 
     """
     Generates Fake Baseball Career Data
