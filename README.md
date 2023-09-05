@@ -11,7 +11,7 @@ bottleneck (at least for me) is getting my hands on data. In effect, this makes 
 * The value I'm trying to create here is the ability to generate simple, probably not great, but reasonable fake data for use in projects before committing to developing web scraping pipelines.
 
 * Example Usages:
-    * see __example.ipynb__.
+    * see __example.ipynb__:
     * ![image](https://github.com/JKolodny/SportFaker/assets/24982246/6578c484-5247-41e9-9d7f-9cd22233bb80)
 
 
