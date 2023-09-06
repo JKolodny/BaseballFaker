@@ -1,5 +1,5 @@
 # ![image](https://github.com/JKolodny/SportFaker/assets/24982246/203c5b92-3bbb-496f-b330-c1d5d2dd30b8)
-* License: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 ![image](https://github.com/JKolodny/SportFaker/assets/24982246/04998275-a11c-4eda-813e-c9f7399ce871)
