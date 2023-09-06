@@ -5,9 +5,8 @@ import numpy as np
 from faker import Faker
 import pandas as pd
 
-def batting(CAREER_LENGTH = 20,
-                NUMBER_GAMES_SEASON = 162,
-                DETERMINISTIC = True):
+
+def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
 
     """
     Generates Fake Baseball Career Data
@@ -31,15 +30,17 @@ def batting(CAREER_LENGTH = 20,
     # Generate a random last name
     last_name = fake.last_name()
 
-    CAREER_STATS = {"AB": [],
-                    "Hits": [], 
-                    "2B": [], 
-                    "3B": [], 
-                    "HR": [],
-                    "RBI": [],
-                    "AVG": [], 
-                    "SLG": [],
-                    "Name":[f"{first_name} {last_name}"] * CAREER_LENGTH}
+    CAREER_STATS = {
+        "AB": [],
+        "Hits": [],
+        "2B": [],
+        "3B": [],
+        "HR": [],
+        "RBI": [],
+        "AVG": [],
+        "SLG": [],
+        "Name": [f"{first_name} {last_name}"] * CAREER_LENGTH,
+    }
 
     for _ in range(CAREER_LENGTH):
 
@@ -61,7 +62,7 @@ def batting(CAREER_LENGTH = 20,
                 if HIT_TYPE < 16:
                     break
                 elif HIT_TYPE < 20:
-                    RBI += .5
+                    RBI += 0.5
                     _2B += 1
                 elif HIT_TYPE < 21:
                     RBI += 1
@@ -69,7 +70,6 @@ def batting(CAREER_LENGTH = 20,
                 else:
                     RBI += 2
                     HR += 1
-
 
         CAREER_STATS["AB"].append(AB)
         CAREER_STATS["Hits"].append(HITS)
@@ -80,20 +80,21 @@ def batting(CAREER_LENGTH = 20,
         CAREER_STATS["AVG"].append(round(HITS / AB, 3))
 
         singles = HITS - (_2B + _3B + HR)
-        total_bases = singles + (2*_2B) + (3*_3B) + (4*HR)
-        slugging = round((total_bases/AB), 3)
-        CAREER_STATS["SLG"].append(slugging) 
+        total_bases = singles + (2 * _2B) + (3 * _3B) + (4 * HR)
+        slugging = round((total_bases / AB), 3)
+        CAREER_STATS["SLG"].append(slugging)
 
     CAREER_STATS = pd.DataFrame(CAREER_STATS)
     totals = pd.DataFrame(CAREER_STATS.sum()).T
-    totals['AVG'] = round(CAREER_STATS['AVG'].mean(), 3)
-    totals['SLG'] = round(CAREER_STATS['SLG'].mean(), 3)
-    totals['Name'] = CAREER_STATS['Name'][0]
+    totals["AVG"] = round(CAREER_STATS["AVG"].mean(), 3)
+    totals["SLG"] = round(CAREER_STATS["SLG"].mean(), 3)
+    totals["Name"] = CAREER_STATS["Name"][0]
 
     CAREER_STATS = pd.concat([CAREER_STATS, totals])
-    CAREER_STATS.index = list(CAREER_STATS.index)[:-1] + ['Career Totals']
+    CAREER_STATS.index = list(CAREER_STATS.index)[:-1] + ["Career Totals"]
 
     return CAREER_STATS
+
 
 def pitching():
 
@@ -105,6 +106,7 @@ def pitching():
     OUTPUT:
     """
     return "Nothing Yet!"
+
 
 def fielding():
 
