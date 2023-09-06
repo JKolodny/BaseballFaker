@@ -96,7 +96,23 @@ def batting(CAREER_LENGTH = 20,
     return CAREER_STATS
 
 def pitching():
+
+    """
+    Generates Fake Baseball Career Pitching Data
+
+    INPUT:
+
+    OUTPUT:
+    """
     return "Nothing Yet!"
 
 def fielding():
+
+    """
+    Generates Fake Baseball Career Fielding Data
+
+    INPUT:
+
+    OUTPUT:
+    """
     return "Nothing Yet!"
