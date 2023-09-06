@@ -94,3 +94,9 @@ def batting(CAREER_LENGTH = 20,
     CAREER_STATS.index = list(CAREER_STATS.index)[:-1] + ['Career Totals']
 
     return CAREER_STATS
+
+def pitching():
+    return "Nothing Yet!"
+
+def fielding():
+    return "Nothing Yet!"
