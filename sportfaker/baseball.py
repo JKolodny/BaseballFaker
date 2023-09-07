@@ -9,11 +9,18 @@ import pandas as pd
 def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
 
     """
-    Generates Fake Baseball Career Data
+    Generates fake baseball career data for a player using random statistics.
 
-    INPUT:
+    Parameters:
+    - CAREER_LENGTH (int, optional): Number of years the player's career lasts. Default is 20.
+    - NUMBER_GAMES_SEASON (int, optional): Number of games in a season. Default is 162.
+    - DETERMINISTIC (bool, optional): If True, the career length is fixed. If False, the career length is randomized. Default is True.
 
-    OUTPUT:
+    Returns:
+    - pd.DataFrame: A DataFrame containing the player's career statistics, including At Bats (AB), Hits, Doubles (2B), Triples (3B), Home Runs (HR), Runs Batted In (RBI), Batting Average (AVG), Slugging Percentage (SLG), and the player's Name. The last row contains the career totals.
+
+    Note:
+    The function uses the Faker library to generate a random player name and numpy for random number generation.
     """
 
     fake = Faker()
