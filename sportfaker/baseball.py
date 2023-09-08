@@ -44,10 +44,11 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
         "3B": [],
         "HR": [],
         "RBI": [],
-        "AVG": [],
         "BB": [],
-        "SLG": [],
+        "AVG": [],
         "OBP": [],
+        "SLG": [],
+        "OPS": [],
         "Name": [f"{first_name} {last_name}"] * CAREER_LENGTH,
     }
 
@@ -91,19 +92,22 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
         CAREER_STATS["AVG"].append(round(HITS / AB, 3))
         WALKS = AB * BB_MULTIPLIER
         CAREER_STATS["BB"].append(round(WALKS))
-        CAREER_STATS["OBP"].append(round(((HITS + WALKS)/(AB + _BB)), 3))
+        OBP = round(((HITS + WALKS)/(AB + _BB)), 3)
+        CAREER_STATS["OBP"].append(OBP)
 
 
         singles = HITS - (_2B + _3B + HR)
         total_bases = singles + (2 * _2B) + (3 * _3B) + (4 * HR)
-        slugging = round((total_bases / AB), 3)
-        CAREER_STATS["SLG"].append(slugging)
+        SLUGGING = round((total_bases / AB), 3)
+        CAREER_STATS["SLG"].append(SLUGGING)
+        CAREER_STATS["OPS"].append(SLUGGING + OBP)
 
     CAREER_STATS = pd.DataFrame(CAREER_STATS)
     totals = pd.DataFrame(CAREER_STATS.sum()).T
     totals["AVG"] = round(CAREER_STATS["AVG"].mean(), 3)
     totals["SLG"] = round(CAREER_STATS["SLG"].mean(), 3)
     totals["OBP"] = round(CAREER_STATS["OBP"].mean(), 3)
+    totals["OPS"] = round(CAREER_STATS["OPS"].mean(), 3)
     totals["Name"] = CAREER_STATS["Name"][0]
 
     CAREER_STATS = pd.concat([CAREER_STATS, totals])
