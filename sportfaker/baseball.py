@@ -45,7 +45,9 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
         "HR": [],
         "RBI": [],
         "AVG": [],
+        "BB": [],
         "SLG": [],
+        "OBP": [],
         "Name": [f"{first_name} {last_name}"] * CAREER_LENGTH,
     }
 
@@ -57,12 +59,14 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
         _3B = 0
         HR = 0
         RBI = 0
+        _BB = 0
 
         for _ in range(NUMBER_GAMES_SEASON):
-            AT_BATS_IN_GAME = np.random.randint(1, 6)
+            AT_BATS_IN_GAME = np.random.randint(1, 5)
             OUTCOME = np.random.randint(0, AT_BATS_IN_GAME)
             HITS += OUTCOME
             AB += AT_BATS_IN_GAME
+            BB_MULTIPLIER = np.random.uniform(0.06, 0.2)
 
             for _ in range(HITS):
                 HIT_TYPE = np.random.randint(0, 22)
@@ -85,6 +89,10 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
         CAREER_STATS["HR"].append(HR)
         CAREER_STATS["RBI"].append(round(RBI))
         CAREER_STATS["AVG"].append(round(HITS / AB, 3))
+        WALKS = AB * BB_MULTIPLIER
+        CAREER_STATS["BB"].append(round(WALKS))
+        CAREER_STATS["OBP"].append(round(((HITS + WALKS)/(AB + _BB)), 3))
+
 
         singles = HITS - (_2B + _3B + HR)
         total_bases = singles + (2 * _2B) + (3 * _3B) + (4 * HR)
@@ -95,6 +103,7 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
     totals = pd.DataFrame(CAREER_STATS.sum()).T
     totals["AVG"] = round(CAREER_STATS["AVG"].mean(), 3)
     totals["SLG"] = round(CAREER_STATS["SLG"].mean(), 3)
+    totals["OBP"] = round(CAREER_STATS["OBP"].mean(), 3)
     totals["Name"] = CAREER_STATS["Name"][0]
 
     CAREER_STATS = pd.concat([CAREER_STATS, totals])
