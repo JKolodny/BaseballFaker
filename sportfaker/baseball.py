@@ -63,26 +63,31 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
         _BB = 0
 
         for _ in range(NUMBER_GAMES_SEASON):
-            AT_BATS_IN_GAME = round(np.random.uniform(2, 5))
+
             HIT_MULTIPLIER = np.random.uniform(0.5, 0.9)
+            BB_MULTIPLIER = np.random.uniform(0.06, 0.2)
+
+            AT_BATS_IN_GAME = round(np.random.uniform(2, 5))
             OUTCOME = np.random.randint(0, AT_BATS_IN_GAME)
             HITS += round(OUTCOME * HIT_MULTIPLIER)
             AB += AT_BATS_IN_GAME
-            BB_MULTIPLIER = np.random.uniform(0.06, 0.2)
 
             for _ in range(HITS):
-                HIT_TYPE = np.random.randint(0, 22)
-                if HIT_TYPE < 16:
+                HIT_TYPE = np.random.randint(0, 25)
+                if HIT_TYPE < 18:
                     break
-                elif HIT_TYPE < 20:
+                elif HIT_TYPE < 21:
                     RBI += 0.5
                     _2B += 1
-                elif HIT_TYPE < 21:
+                elif HIT_TYPE < 22:
                     RBI += 1
                     _3B += 1
                 else:
                     RBI += 2
                     HR += 1
+
+        WALKS = AB * BB_MULTIPLIER
+        OBP = round(((HITS + WALKS) / (AB + _BB)), 3)
 
         CAREER_STATS["AB"].append(AB)
         CAREER_STATS["Hits"].append(HITS)
@@ -91,11 +96,8 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
         CAREER_STATS["HR"].append(HR)
         CAREER_STATS["RBI"].append(round(RBI))
         CAREER_STATS["AVG"].append(round(HITS / AB, 3))
-        WALKS = AB * BB_MULTIPLIER
         CAREER_STATS["BB"].append(round(WALKS))
-        OBP = round(((HITS + WALKS)/(AB + _BB)), 3)
         CAREER_STATS["OBP"].append(OBP)
-
 
         singles = HITS - (_2B + _3B + HR)
         total_bases = singles + (2 * _2B) + (3 * _3B) + (4 * HR)
