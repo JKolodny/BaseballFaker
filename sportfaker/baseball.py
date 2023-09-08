@@ -63,9 +63,10 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
         _BB = 0
 
         for _ in range(NUMBER_GAMES_SEASON):
-            AT_BATS_IN_GAME = np.random.randint(1, 5)
+            AT_BATS_IN_GAME = round(np.random.uniform(2, 5))
+            HIT_MULTIPLIER = np.random.uniform(0.5, 0.9)
             OUTCOME = np.random.randint(0, AT_BATS_IN_GAME)
-            HITS += OUTCOME
+            HITS += round(OUTCOME * HIT_MULTIPLIER)
             AB += AT_BATS_IN_GAME
             BB_MULTIPLIER = np.random.uniform(0.06, 0.2)
 
