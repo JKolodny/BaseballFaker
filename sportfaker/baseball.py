@@ -135,14 +135,3 @@ def pitching():
     """
     return "Nothing Yet!"
 
-
-def fielding():
-
-    """
-    Generates Fake Baseball Career Fielding Data
-
-    INPUT:
-
-    OUTPUT:
-    """
-    return "Nothing Yet!"
