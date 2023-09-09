@@ -155,8 +155,6 @@ def pitching(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=32, DETERMINISTIC=True):
         "BB": [],
         "H": [],
         "HR": [],
-        "SV": [],
-        "BS": [],
         "WHIP": [],
         "Name": [f"{first_name} {last_name}"] * CAREER_LENGTH,
     }
@@ -171,8 +169,6 @@ def pitching(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=32, DETERMINISTIC=True):
         BB = np.random.randint(20, 100)
         H = np.random.randint(100, 220)
         HR = np.random.randint(0, 40)
-        SV = np.random.randint(0, 5)
-        BS = np.random.randint(0, 5)
         ERA = round((np.random.uniform(2, 5)), 2)
         WHIP = round((BB + H) / IP, 3)
 
@@ -185,8 +181,6 @@ def pitching(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=32, DETERMINISTIC=True):
         CAREER_STATS["BB"].append(BB)
         CAREER_STATS["H"].append(H)
         CAREER_STATS["HR"].append(HR)
-        CAREER_STATS["SV"].append(SV)
-        CAREER_STATS["BS"].append(BS)
         CAREER_STATS["WHIP"].append(WHIP)
 
         AGE += 1
