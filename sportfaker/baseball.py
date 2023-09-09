@@ -5,9 +5,7 @@ import numpy as np
 from faker import Faker
 import pandas as pd
 
-
-def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
-
+def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True, skill_level=0.5):
     """
     Generates fake baseball career data for a player using random statistics.
 
@@ -15,26 +13,19 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
     - CAREER_LENGTH (int, optional): Number of years the player's career lasts. Default is 20.
     - NUMBER_GAMES_SEASON (int, optional): Number of games in a season. Default is 162.
     - DETERMINISTIC (bool, optional): If True, the career length is fixed. If False, the career length is randomized. Default is True.
+    - skill_level (float, optional): Skill level of the player, ranging from 0 (lowest) to 1 (highest). Default is 0.5.
 
     Returns:
-    - pd.DataFrame: A DataFrame containing the player's career statistics, including At Bats (AB), Hits, Doubles (2B), Triples (3B), Home Runs (HR), Runs Batted In (RBI), Batting Average (AVG), Slugging Percentage (SLG), and the player's Name. The last row contains the career totals.
-
-    Note:
-    The function uses the Faker library to generate a random player name and numpy for random number generation.
+    - pd.DataFrame: A DataFrame containing the player's career statistics.
     """
 
     fake = Faker()
 
-    # variable career length
     if not DETERMINISTIC:
         CAREER_MULTIPLIER = np.random.uniform(0.7, 1.2)
         CAREER_LENGTH = round(CAREER_LENGTH * CAREER_MULTIPLIER)
 
-    # generating name
-    # Generate a random male first name
     first_name = fake.first_name_male()
-
-    # Generate a random last name
     last_name = fake.last_name()
 
     CAREER_STATS = {
@@ -56,7 +47,6 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
     AGE = np.random.randint(19, 27)
 
     for _ in range(CAREER_LENGTH):
-
         HITS = 0
         AB = 0
         _2B = 0
@@ -67,9 +57,8 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
         AGE += 1
 
         for _ in range(NUMBER_GAMES_SEASON):
-
-            HIT_MULTIPLIER = np.random.uniform(0.5, 0.9)
-            BB_MULTIPLIER = np.random.uniform(0.06, 0.2)
+            HIT_MULTIPLIER = np.random.uniform(0.5, 0.5 + (0.4 * skill_level))
+            BB_MULTIPLIER = np.random.uniform(0.06, 0.06 + (0.14 * skill_level))
 
             AT_BATS_IN_GAME = round(np.random.uniform(2, 5))
             OUTCOME = np.random.randint(0, AT_BATS_IN_GAME)
@@ -123,7 +112,8 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
 
     return CAREER_STATS
 
-def pitching(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=32, DETERMINISTIC=True):
+
+def pitching(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=32, DETERMINISTIC=True, skill_level=0.5):
     """
     Generates fake baseball career data for a pitcher using random statistics.
 
@@ -131,6 +121,7 @@ def pitching(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=32, DETERMINISTIC=True):
     - CAREER_LENGTH (int, optional): Number of years the player's career lasts. Default is 20.
     - NUMBER_GAMES_SEASON (int, optional): Number of games in a season. Default is 32 (assuming a starting pitcher).
     - DETERMINISTIC (bool, optional): If True, the career length is fixed. If False, the career length is randomized. Default is True.
+    - skill_level (float, optional): Skill level of the player, ranging from 0 (lowest) to 1 (highest). Default is 0.5.
 
     Returns:
     - pd.DataFrame: A DataFrame containing the player's career statistics.
@@ -155,6 +146,8 @@ def pitching(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=32, DETERMINISTIC=True):
         "BB": [],
         "H": [],
         "HR": [],
+        "SV": [],
+        "BS": [],
         "WHIP": [],
         "Name": [f"{first_name} {last_name}"] * CAREER_LENGTH,
     }
@@ -162,14 +155,17 @@ def pitching(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=32, DETERMINISTIC=True):
     AGE = np.random.randint(19, 27)
 
     for _ in range(CAREER_LENGTH):
-        W = np.random.randint(0, 25)
-        L = np.random.randint(0, 25)
+        # Adjusting statistics based on skill level
+        W = np.random.randint(0, int(25 * skill_level))
+        L = np.random.randint(0, int(25 * (1 - skill_level)))
         IP = round(np.random.uniform(150, 220))
-        K = np.random.randint(100, 300)
-        BB = np.random.randint(20, 100)
-        H = np.random.randint(100, 220)
-        HR = np.random.randint(0, 40)
-        ERA = round((np.random.uniform(2, 5)), 2)
+        K = np.random.randint(0, int(300 * skill_level))
+        BB = np.random.randint(0, int(100 * (1 - skill_level)))
+        H = np.random.randint(0, int(220 * (1 - skill_level)))
+        HR = np.random.randint(0, int(40 * (1 - skill_level)))
+        SV = 0
+        BS = 0
+        ERA = round(np.random.uniform(2 + (3 * (1 - skill_level)), 5 - (2 * skill_level)), 2)
         WHIP = round((BB + H) / IP, 3)
 
         CAREER_STATS["AGE"].append(AGE)
@@ -181,6 +177,8 @@ def pitching(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=32, DETERMINISTIC=True):
         CAREER_STATS["BB"].append(BB)
         CAREER_STATS["H"].append(H)
         CAREER_STATS["HR"].append(HR)
+        CAREER_STATS["SV"].append(SV)
+        CAREER_STATS["BS"].append(BS)
         CAREER_STATS["WHIP"].append(WHIP)
 
         AGE += 1
@@ -195,5 +193,3 @@ def pitching(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=32, DETERMINISTIC=True):
     CAREER_STATS.index = list(CAREER_STATS.index)[:-1] + ["Career Totals"]
 
     return CAREER_STATS
-
-
