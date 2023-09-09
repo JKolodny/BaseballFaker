@@ -38,6 +38,7 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
     last_name = fake.last_name()
 
     CAREER_STATS = {
+        "AGE": [],
         "AB": [],
         "Hits": [],
         "2B": [],
@@ -52,6 +53,8 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
         "Name": [f"{first_name} {last_name}"] * CAREER_LENGTH,
     }
 
+    AGE = np.random.randint(19, 27)
+
     for _ in range(CAREER_LENGTH):
 
         HITS = 0
@@ -61,6 +64,7 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
         HR = 0
         RBI = 0
         _BB = 0
+        AGE += 1
 
         for _ in range(NUMBER_GAMES_SEASON):
 
@@ -89,6 +93,7 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
         WALKS = AB * BB_MULTIPLIER
         OBP = round(((HITS + WALKS) / (AB + _BB)), 3)
 
+        CAREER_STATS["AGE"].append(AGE)
         CAREER_STATS["AB"].append(AB)
         CAREER_STATS["Hits"].append(HITS)
         CAREER_STATS["2B"].append(_2B)
