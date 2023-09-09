@@ -123,15 +123,83 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True):
 
     return CAREER_STATS
 
-
-def pitching():
-
+def pitching(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=32, DETERMINISTIC=True):
     """
-    Generates Fake Baseball Career Pitching Data
+    Generates fake baseball career data for a pitcher using random statistics.
 
-    INPUT:
+    Parameters:
+    - CAREER_LENGTH (int, optional): Number of years the player's career lasts. Default is 20.
+    - NUMBER_GAMES_SEASON (int, optional): Number of games in a season. Default is 32 (assuming a starting pitcher).
+    - DETERMINISTIC (bool, optional): If True, the career length is fixed. If False, the career length is randomized. Default is True.
 
-    OUTPUT:
+    Returns:
+    - pd.DataFrame: A DataFrame containing the player's career statistics.
     """
-    return "Nothing Yet!"
+
+    fake = Faker()
+
+    if not DETERMINISTIC:
+        CAREER_MULTIPLIER = np.random.uniform(0.7, 1.2)
+        CAREER_LENGTH = round(CAREER_LENGTH * CAREER_MULTIPLIER)
+
+    first_name = fake.first_name_male()
+    last_name = fake.last_name()
+
+    CAREER_STATS = {
+        "AGE": [],
+        "W": [],
+        "L": [],
+        "ERA": [],
+        "IP": [],
+        "K": [],
+        "BB": [],
+        "H": [],
+        "HR": [],
+        "SV": [],
+        "BS": [],
+        "WHIP": [],
+        "Name": [f"{first_name} {last_name}"] * CAREER_LENGTH,
+    }
+
+    AGE = np.random.randint(19, 27)
+
+    for _ in range(CAREER_LENGTH):
+        W = np.random.randint(0, 25)
+        L = np.random.randint(0, 25)
+        IP = round(np.random.uniform(150, 220))
+        K = np.random.randint(100, 300)
+        BB = np.random.randint(20, 100)
+        H = np.random.randint(100, 220)
+        HR = np.random.randint(0, 40)
+        SV = np.random.randint(0, 5)
+        BS = np.random.randint(0, 5)
+        ERA = round((np.random.uniform(2, 5)), 2)
+        WHIP = round((BB + H) / IP, 3)
+
+        CAREER_STATS["AGE"].append(AGE)
+        CAREER_STATS["W"].append(W)
+        CAREER_STATS["L"].append(L)
+        CAREER_STATS["ERA"].append(ERA)
+        CAREER_STATS["IP"].append(IP)
+        CAREER_STATS["K"].append(K)
+        CAREER_STATS["BB"].append(BB)
+        CAREER_STATS["H"].append(H)
+        CAREER_STATS["HR"].append(HR)
+        CAREER_STATS["SV"].append(SV)
+        CAREER_STATS["BS"].append(BS)
+        CAREER_STATS["WHIP"].append(WHIP)
+
+        AGE += 1
+
+    CAREER_STATS = pd.DataFrame(CAREER_STATS)
+    totals = pd.DataFrame(CAREER_STATS.sum()).T
+    totals["ERA"] = round(CAREER_STATS["ERA"].mean(), 2)
+    totals["WHIP"] = round(CAREER_STATS["WHIP"].mean(), 3)
+    totals["Name"] = CAREER_STATS["Name"][0]
+
+    CAREER_STATS = pd.concat([CAREER_STATS, totals])
+    CAREER_STATS.index = list(CAREER_STATS.index)[:-1] + ["Career Totals"]
+
+    return CAREER_STATS
+
 
