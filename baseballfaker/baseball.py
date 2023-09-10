@@ -57,8 +57,8 @@ def batting(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=162, DETERMINISTIC=True, skill
         AGE += 1
 
         for _ in range(NUMBER_GAMES_SEASON):
-            HIT_MULTIPLIER = np.random.uniform(0.5, 0.5 + (0.4 * skill_level))
-            BB_MULTIPLIER = np.random.uniform(0.06, 0.06 + (0.14 * skill_level))
+            HIT_MULTIPLIER = np.random.uniform(0.5, 0.8 + (0.4 * skill_level))
+            BB_MULTIPLIER = np.random.uniform(0.06, 0.1 + (0.14 * skill_level))
 
             AT_BATS_IN_GAME = round(np.random.uniform(2, 5))
             OUTCOME = np.random.randint(0, AT_BATS_IN_GAME)
@@ -157,11 +157,11 @@ def pitching(CAREER_LENGTH=20, NUMBER_GAMES_SEASON=32, DETERMINISTIC=True, skill
     for _ in range(CAREER_LENGTH):
         # Adjusting statistics based on skill level
         W = np.random.randint(0, int(25 * skill_level))
-        L = np.random.randint(0, int(25 * (1 - skill_level)))
+        L = np.random.randint(0, int(25 * (1.4 - skill_level)))
         IP = round(np.random.uniform(150, 220))
         K = np.random.randint(0, int(300 * skill_level))
-        BB = np.random.randint(0, int(100 * (1 - skill_level)))
-        H = np.random.randint(0, int(220 * (1 - skill_level)))
+        BB = np.random.randint(0, int(100 * (1 - skill_level))) + 60
+        H = np.random.randint(0, int(220 * (1 - skill_level))) + 60
         HR = np.random.randint(0, int(40 * (1 - skill_level)))
         SV = 0
         BS = 0
