@@ -1,3 +1,5 @@
+Font: https://fontmeme.com/futuristic-fonts/
+
 # ![image](https://github.com/JKolodny/BaseballFaker/assets/24982246/a964ab4e-bf43-41b7-9c41-0b8a5e2379e9)
 
 ![image](https://github.com/JKolodny/BaseballFaker/assets/24982246/b6762139-61eb-44d4-a7c3-2762ed5c9659)
