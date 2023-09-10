@@ -1,7 +1,8 @@
 # ![image](https://github.com/JKolodny/BaseballFaker/assets/24982246/0e1e575f-32c2-40ea-b3e5-b61ec10fc42e)
 
 
-![image](https://github.com/JKolodny/SportFaker/assets/24982246/04998275-a11c-4eda-813e-c9f7399ce871)
+![image](https://github.com/JKolodny/BaseballFaker/assets/24982246/b6762139-61eb-44d4-a7c3-2762ed5c9659)
+
 
 ## Motivation
 
