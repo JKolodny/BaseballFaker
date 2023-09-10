@@ -4,7 +4,7 @@ Font: https://fontmeme.com/futuristic-fonts/
 
 ![image](https://github.com/JKolodny/BaseballFaker/assets/24982246/b6762139-61eb-44d4-a7c3-2762ed5c9659)
 
-## ![image](https://github.com/JKolodny/BaseballFaker/assets/24982246/29d256ae-46eb-4c8d-87a2-7acc93c9f37f)
+## ![image](https://github.com/JKolodny/BaseballFaker/assets/24982246/2ea5d181-af4c-4cf9-8b05-329a83c29e8a)
 
 * Lately, when trying to work on sports analytics projects, I realize that a big
 bottleneck (at least for me) is getting my hands on data. In effect, this makes it so that when I want to start a project, I try to re-learn a little about web scraping for a day or two, and then quit soon after that. 
