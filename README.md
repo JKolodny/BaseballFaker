@@ -11,11 +11,16 @@ bottleneck (at least for me) is getting my hands on data. In effect, this makes 
 
 * The value I'm trying to create here is the ability to generate simple, probably not great, but reasonable fake data for use in projects before committing to developing web scraping pipelines.
 
-'''
-from baseballfaker.baseball import batting
-'''
+## Usage
 
-* Example Usages:
+```
+from baseballfaker.baseball import batting
+
+batting(CAREER_LENGTH=10, 
+        skill_level=.9)
+```
+
+* Example Output:
     * see __example.ipynb__:
       ![image](https://github.com/JKolodny/SportFaker/assets/24982246/6578c484-5247-41e9-9d7f-9cd22233bb80)
 
