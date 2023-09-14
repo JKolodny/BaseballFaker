@@ -1,6 +1,6 @@
 [project]
 name = "BaseballFaker"
-version = "0.0.1"
+version = "0.0.1.1"
 authors = [
   { name="Josh Kolodny", email="kolo.josh@gmail.com" },
 ]
@@ -12,7 +12,15 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dependencies = [
+    "faker",
+    "numpy",
+    "requests"
+]
 
 [project.urls]
 "Homepage" = "https://github.com/JKolodny/BaseballFaker"
 "Bug Tracker" = "https://github.com/JKolodny/BaseballFaker/issues"
+
+[build-system]
+requires = ["setuptools", "wheel"]
