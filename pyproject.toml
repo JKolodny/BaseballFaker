@@ -2,7 +2,7 @@
 name = "SportFaker"
 version = "0.0.1"
 authors = [
-  { name="Josh Kolodny", email="" },
+  { name="Josh Kolodny", email="kolo.josh@gmail.com" },
 ]
 description = "A small example package"
 readme = "README.md"
