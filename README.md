@@ -22,6 +22,9 @@ batting(CAREER_LENGTH=10,
     * see __example.ipynb__:
       ![image](https://github.com/JKolodny/SportFaker/assets/24982246/6578c484-5247-41e9-9d7f-9cd22233bb80)
 
+* Try it out!
+        * link: https://colab.research.google.com/drive/1i2MNvq7QqfESSEbhTfe1WYn05_WtMeK-?usp=sharing          
+
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
