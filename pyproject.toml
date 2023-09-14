@@ -16,3 +16,6 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/JKolodny/BaseballFaker"
 "Bug Tracker" = "https://github.com/JKolodny/BaseballFaker/issues"
+
+[build-system]
+requires = ["faker"]
