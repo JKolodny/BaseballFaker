@@ -12,7 +12,11 @@ bottleneck (at least for me) is getting my hands on data. In effect, this makes 
 * The value I'm trying to create here is the ability to generate simple, probably not great, but reasonable fake data for use in projects before committing to developing web scraping pipelines.
 
 '''
-This is a test!
+>> from baseballfaker.baseball import batting
+>>               AGE    AB Hits  2B  3B   HR  RBI   BB    AVG    OBP    SLG    OPS           Name
+0              26   567  171  14   5   34   80   53  0.302  0.396  0.524  0.920  Kyle Holloway
+1              27   551  164  32  12   42  112   68  0.298  0.421  0.628  1.049  Kyle Holloway
+2              28   558  157  32  12   29   86  119  0.281  0.494  0.538  1.032  Kyle Holloway
 '''
 
 * Example Usages:
